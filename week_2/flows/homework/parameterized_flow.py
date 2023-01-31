@@ -6,6 +6,7 @@ from random import randint
 from prefect_gcp.cloud_storage import GcsBucket
 from prefect.tasks import task_input_hash
 from datetime import timedelta
+from os import getcwd
 
 @task(retries=3)
 def fetch(dataset_url:str) -> pd.DataFrame:
@@ -27,8 +28,9 @@ def clean(df:pd.DataFrame) -> pd.DataFrame:
 @task(log_prints=True)
 def write_local(df:pd.DataFrame, color: str, dataset_file: str) -> Path:
     """Write Dataframe out locally as parquet file"""
-    print(path)
     path = Path(f"data/{color}/{dataset_file}.parquet")
+    print(path)
+    print(getcwd())
     df.to_parquet(path, compression="gzip")
     return path
 
