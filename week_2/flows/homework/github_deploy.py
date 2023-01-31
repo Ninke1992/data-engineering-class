@@ -14,7 +14,8 @@ github_dep = Deployment.build_from_flow(
     flow=etl_parent_flow,
     name="github-flow",
     storage = github_block,
-    path = "week_2/flows/homework"
+    path = "week_2/flows/homework",
+    
     )
 
 if __name__ == "__main__":

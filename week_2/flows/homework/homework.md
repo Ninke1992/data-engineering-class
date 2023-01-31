@@ -70,7 +70,7 @@ How many rows were processed by the script?
 - 88,605
 - 190,225
 
-
+ANSWER: 88605
 
 ## Question 5. Email notifications
 
@@ -87,6 +87,7 @@ How many rows were processed by the script?
 - `728,390`
 - `514,392`
 
+ANSWER: `514,392`
 
 ## Question 6. Secrets
 
@@ -97,6 +98,7 @@ Prefect Secret blocks provide secure, encrypted storage in the database and obfu
 - 8
 - 10
 
+ANSWER: 8
 
 ## Submitting the solutions
 
