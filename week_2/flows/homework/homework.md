@@ -53,7 +53,7 @@ Make sure you have the parquet data files for Yellow taxi data for Feb. 2019 and
 - 27,235,753
 - 11,338,483
 
-
+ANSWER: 14,851,920
 
 ## Question 4. Github Storage Block
 
