@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: staging
+    database: decamp-375312
+    schema: DEcamp
+    
+    tables:
+      - name: external_yellow_tripdata
+      - name: external_fhv_tripdata
+      - name: external_green_tripdata
