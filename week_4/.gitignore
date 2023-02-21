@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+<<<<<<<< HEAD:week_4/.gitignore
+
 target/
 dbt_packages/
 logs/
+
+========
+>>>>>>>> 6c4a051d0a1b424cdbcca17540b707bb58ba1784:.gitignore
+week_3/data/
+week_2/data/
+=======
+target/
+dbt_packages/
+logs/
+>>>>>>> 6c4a051d0a1b424cdbcca17540b707bb58ba1784
