@@ -3,7 +3,6 @@ import pandas as pd
 from prefect import flow, task
 from prefect_gcp.cloud_storage import GcsBucket
 from random import randint
-from prefect_gcp.cloud_storage import GcsBucket
 from prefect.tasks import task_input_hash
 from datetime import timedelta
 from os import getcwd
@@ -18,8 +17,8 @@ def fetch(dataset_url:str) -> pd.DataFrame:
 @task(log_prints=True)
 def clean(df:pd.DataFrame) -> pd.DataFrame:
     """Fix dtype issues"""
-    df['lpep_pickup_datetime'] = pd.to_datetime(df['lpep_pickup_datetime'])
-    df['lpep_dropoff_datetime']= pd.to_datetime(df['lpep_dropoff_datetime'])
+    df['tpep_pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime'])
+    df['tpep_dropoff_datetime']= pd.to_datetime(df['tpep_dropoff_datetime'])
     print(df.head(2))
     print(f"columns: {df.dtypes}")
     print(f"rows: {len(df)}")
@@ -28,9 +27,9 @@ def clean(df:pd.DataFrame) -> pd.DataFrame:
 @task(log_prints=True)
 def write_local(df:pd.DataFrame, color: str, dataset_file: str) -> Path:
     """Write Dataframe out locally as parquet file"""
-    path = Path(f"data/{color}/{dataset_file}.parquet")
-    write_path = f"{dataset_file}.parquet"
-    df.to_parquet(write_path, compression="gzip")
+    path = Path(f"data/{color}/{dataset_file}.csv.gz")
+    write_path = f"{dataset_file}.csv.gz"
+    df.to_csv(write_path, compression="gzip")
     return write_path, path
 
 @task(log_prints=True)
@@ -62,9 +61,9 @@ def etl_parent_flow(
         etl_web_to_gcs(year, month, color)
 
 if __name__ == "__main__":
-    color = 'green'
-    months = [11]
-    year = 2020
+    color = 'yellow'
+    months = [11,12]
+    year = 2019
     etl_parent_flow(months, year, color)
 
     
