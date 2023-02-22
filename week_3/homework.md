@@ -27,6 +27,8 @@ What is the estimated amount of data that will be read when this query is execut
 - 0 MB for the External Table and 0MB for the Materialized Table
 - 0 MB for the External Table and 317.94MB for the Materialized Table 
 
+ANSWER: 0 MB for the External Table and 317.94MB for the Materialized Table 
+
 
 ## Question 3:
 How many records have both a blank (null) PUlocationID and DOlocationID in the entire dataset?
@@ -35,12 +37,16 @@ How many records have both a blank (null) PUlocationID and DOlocationID in the e
 - 5
 - 20,332
 
+Q3 - 717,748
+
 ## Question 4:
 What is the best strategy to optimize the table if query always filter by pickup_datetime and order by affiliated_base_number?
 - Cluster on pickup_datetime Cluster on affiliated_base_number
 - Partition by pickup_datetime Cluster on affiliated_base_number
 - Partition by pickup_datetime Partition by affiliated_base_number
 - Partition by affiliated_base_number Cluster on pickup_datetime
+
+Q4 - Partition by pickup_datetime Cluster on affiliated_base_number
 
 ## Question 5:
 Implement the optimized solution you chose for question 4. Write a query to retrieve the distinct affiliated_base_number between pickup_datetime 03/01/2019 and 03/31/2019 (inclusive).</br> 
@@ -50,6 +56,7 @@ Use the materialized table you created earlier in your from clause and note the 
 - 582.63 MB for non-partitioned table and 0 MB for the partitioned table
 - 646.25 MB for non-partitioned table and 646.25 MB for the partitioned table
 
+Q5 - 647.87 MB for non-partitioned table and 23.06 MB for the partitioned table
 
 ## Question 6: 
 Where is the data stored in the External Table you created?
@@ -59,12 +66,14 @@ Where is the data stored in the External Table you created?
 - Container Registry
 - Big Table
 
+Q6 - GCP Bucket
 
 ## Question 7:
 It is best practice in Big Query to always cluster your data:
 - True
 - False
 
+Q7 - False
 
 ## (Not required) Question 8:
 A better format to store these files may be parquet. Create a data pipeline to download the gzip files and convert them into parquet. Upload the files to your GCP Bucket and create an External and Materialized Table. 
